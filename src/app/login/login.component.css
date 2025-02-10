@@ -1,0 +1,109 @@
+body {
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
+  font-family: "Arial", sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #ff512f;
+  box-shadow: 0 0 8px rgba(255, 81, 47, 0.5);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #ff9a9e, #fecfef);
+  color: #333;
+  border: 1px solid #ff9a9e;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #fecfef, #ff9a9e);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(255, 81, 47, 0.3);
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.customer-login {
+  margin-top: 10px;
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  color: #333;
+  border: 1px solid #a1c4fd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.customer-login:hover {
+  background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}

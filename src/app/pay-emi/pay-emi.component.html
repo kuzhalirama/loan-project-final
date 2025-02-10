@@ -1,0 +1,155 @@
+<div class="pay-emi-container">
+  <h2>Pay EMI</h2>
+  <form (ngSubmit)="payEMI()">
+    <div class="input-group">
+      <label for="customerId">Customer ID:</label>
+      <input
+        type="text"
+        id="customerId"
+        [(ngModel)]="paymentDetails.customerId"
+        name="customerId"
+        required
+      />
+    </div>
+    <div class="input-group">
+      <label for="loanPlanId">Loan Plan ID:</label>
+      <input
+        type="text"
+        id="loanPlanId"
+        [(ngModel)]="paymentDetails.loanPlanId"
+        name="loanPlanId"
+        required
+      />
+    </div>
+    <div class="input-group">
+      <label for="amount">Amount:</label>
+      <input
+        type="number"
+        id="amount"
+        [(ngModel)]="paymentDetails.amount"
+        name="amount"
+        required
+        (change)="calculateLateFee()"
+      />
+    </div>
+    <div class="input-group">
+      <label for="paymentDate">Payment Date:</label>
+      <input
+        type="date"
+        id="paymentDate"
+        [(ngModel)]="paymentDetails.paymentDate"
+        name="paymentDate"
+        required
+        (change)="calculateLateFee()"
+      />
+    </div>
+    <div class="input-group">
+      <label for="lateFee">Late Fee:</label>
+      <input
+        type="number"
+        id="lateFee"
+        [(ngModel)]="paymentDetails.lateFee"
+        name="lateFee"
+        readonly
+      />
+    </div>
+    <div class="input-group">
+      <label for="paymentMethod">Payment Method:</label>
+      <select
+        id="paymentMethod"
+        [(ngModel)]="paymentDetails.paymentMethodId"
+        name="paymentMethodId"
+        required
+      >
+        <option value="1">UPI</option>
+        <option value="2">Net Banking</option>
+        <option value="3">Card</option>
+      </select>
+    </div>
+    <button type="submit">Pay EMI</button>
+  </form>
+  <div *ngIf="acknowledgement" class="acknowledgement">
+    <p>{{ acknowledgement }}</p>
+  </div>
+  <div class="pay-emi-container">
+    <button class="small-button" (click)="navigateHome()">Back to Home</button>
+  </div>
+</div>
+<!-- 
+<div class="pay-emi-container">
+  <h2>Pay EMI</h2>
+  <form (ngSubmit)="payEMI()">
+    <div class="input-group">
+      <label for="customerId">Customer ID:</label>
+      <input
+        type="text"
+        id="customerId"
+        [(ngModel)]="paymentDetails.customerId"
+        name="customerId"
+        required
+      />
+    </div>
+    <div class="input-group">
+      <label for="loanPlanId">Loan Plan ID:</label>
+      <input
+        type="text"
+        id="loanPlanId"
+        [(ngModel)]="paymentDetails.loanPlanId"
+        name="loanPlanId"
+        required
+      />
+    </div>
+    <div class="input-group">
+      <label for="amount">Amount:</label>
+      <input
+        type="number"
+        id="amount"
+        [(ngModel)]="paymentDetails.amount"
+        name="amount"
+        required
+        (change)="calculateLateFee()"
+      />
+    </div>
+    <div class="input-group">
+      <label for="paymentDate">Payment Date:</label>
+      <input
+        type="date"
+        id="paymentDate"
+        [(ngModel)]="paymentDetails.paymentDate"
+        name="paymentDate"
+        required
+        (change)="calculateLateFee()"
+      />
+    </div>
+    <div class="input-group">
+      <label for="lateFee">Late Fee:</label>
+      <input
+        type="number"
+        id="lateFee"
+        [(ngModel)]="paymentDetails.lateFee"
+        name="lateFee"
+        readonly
+      />
+    </div>
+    <div class="input-group">
+      <label for="paymentMethod">Payment Method:</label>
+      <select
+        id="paymentMethod"
+        [(ngModel)]="paymentDetails.paymentMethodId"
+        name="paymentMethodId"
+        required
+      >
+        <option value="1">UPI</option>
+        <option value="2">Net Banking</option>
+        <option value="3">Card</option>
+      </select>
+    </div>
+    <button type="submit">Pay EMI</button>
+  </form>
+  <div *ngIf="acknowledgement" class="acknowledgement">
+    <p>{{ acknowledgement }}</p>
+  </div>
+  <div class="pay-emi-container">
+    <button class="small-button" (click)="navigateHome()">Back to Home</button>
+  </div>
+</div> -->

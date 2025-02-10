@@ -1,0 +1,74 @@
+<div class="emi-plan-container">
+  <h2>View EMI Plan</h2>
+  <div class="input-group">
+    <label for="customerId">Customer ID:</label>
+    <input
+      type="text"
+      id="customerId"
+      [(ngModel)]="customerId"
+      placeholder="Enter Customer ID"
+    />
+  </div>
+  <div class="input-group">
+    <label for="loanPlanId">Loan Plan ID:</label>
+    <input
+      type="text"
+      id="loanPlanId"
+      [(ngModel)]="loanPlanId"
+      placeholder="Enter Loan Plan ID"
+    />
+  </div>
+  <button class="small-button" (click)="searchEMIPlan()">Search</button>
+
+  <div *ngIf="emiPlan" class="details-container">
+    <h3>EMI Plan Details</h3>
+    <p><strong>Customer Name:</strong> {{ emiPlan.customerName }}</p>
+    <p><strong>Customer Phone:</strong> {{ emiPlan.customerPhone }}</p>
+    <p><strong>Customer Address:</strong> {{ emiPlan.customerAddress }}</p>
+    <p><strong>Customer PAN:</strong> {{ emiPlan.customerPAN }}</p>
+    <p><strong>EMI Amount:</strong> {{ emiPlan.emiAmount }}</p>
+    <p><strong>EMI Start Date:</strong> {{ emiPlan.emiStart }}</p>
+    <p><strong>Number of EMIs:</strong> {{ emiPlan.numberOfEMIs }}</p>
+    <p><strong>EMI Status:</strong> {{ emiPlan.emiStatus }}</p>
+    <button class="small-button" (click)="viewPaymentHistory()">
+      View Payment History
+    </button>
+  </div>
+
+  <div *ngIf="emiPlan === null && showErrors" class="error">
+    No EMI plan found for the given Customer ID and Loan Plan ID
+  </div>
+
+  <div *ngIf="paymentHistory.length > 0" class="details-container">
+    <h3>Payment History</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Payment Date</th>
+          <th>Amount</th>
+          <th>Late Fee</th>
+          <th>EMI ID</th>
+
+          <th>Payment Method Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of paymentHistory">
+          <td>{{ payment.paymentDate }}</td>
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.lateFee }}</td>
+          <td>{{ payment.emisId }}</td>
+
+          <td>{{ payment.paymentMethodId }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="paymentHistory.length === 0 && showErrors" class="error">
+    No payment history found
+  </div>
+
+  <div class="emi-plan-container">
+    <button class="small-button" (click)="navigateHome()">Back to Home</button>
+  </div>
+</div>

@@ -1,0 +1,205 @@
+<div class="form-container">
+  <h2 class="form-heading">Create New EMI Plan</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="customerId">Customer ID:</label>
+      <input type="number" id="customerId" formControlName="customerId" />
+      <div
+        *ngIf="
+          form.controls['customerId'].invalid &&
+          (form.controls['customerId'].dirty ||
+            form.controls['customerId'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['customerId'].errors?.['required']"
+          >Customer ID is required.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="loanPlanId">Loan Plan ID:</label>
+      <input type="number" id="loanPlanId" formControlName="loanPlanId" />
+      <div
+        *ngIf="
+          form.controls['loanPlanId'].invalid &&
+          (form.controls['loanPlanId'].dirty ||
+            form.controls['loanPlanId'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['loanPlanId'].errors?.['required']"
+          >Loan Plan ID is required.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="emiAmount">EMI Amount:</label>
+      <input type="number" id="emiAmount" formControlName="emiAmount" />
+      <div
+        *ngIf="
+          form.controls['emiAmount'].invalid &&
+          (form.controls['emiAmount'].dirty ||
+            form.controls['emiAmount'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['emiAmount'].errors?.['required']"
+          >EMI amount is required.</small
+        >
+        <small class="error" *ngIf="form.controls['emiAmount'].errors?.['min']"
+          >EMI amount must be a positive number.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="emiStart">EMI Start Date:</label>
+      <input type="date" id="emiStart" formControlName="emiStart" />
+      <div
+        *ngIf="
+          form.controls['emiStart'].invalid &&
+          (form.controls['emiStart'].dirty || form.controls['emiStart'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['emiStart'].errors?.['required']"
+          >EMI start date is required.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="numberEmis">Number of EMIs:</label>
+      <input type="number" id="numberEmis" formControlName="numberEmis" />
+      <div
+        *ngIf="
+          form.controls['numberEmis'].invalid &&
+          (form.controls['numberEmis'].dirty ||
+            form.controls['numberEmis'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['numberEmis'].errors?.['required']"
+          >Number of EMIs is required.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="customerName">Customer Name:</label>
+      <input type="text" id="customerName" formControlName="customerName" />
+      <div
+        *ngIf="
+          form.controls['customerName'].invalid &&
+          (form.controls['customerName'].dirty ||
+            form.controls['customerName'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['customerName'].errors?.['required']"
+          >Customer name is required.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="customerPhone">Customer Phone:</label>
+      <input type="text" id="customerPhone" formControlName="customerPhone" />
+      <div
+        *ngIf="
+          form.controls['customerPhone'].invalid &&
+          (form.controls['customerPhone'].dirty ||
+            form.controls['customerPhone'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['customerPhone'].errors?.['required']"
+          >Customer phone is required.</small
+        >
+        <small
+          class="error"
+          *ngIf="form.controls['customerPhone'].errors?.['pattern']"
+          >Customer phone must be exactly 10 digits long.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="customerAddress">Customer Address:</label>
+      <input
+        type="text"
+        id="customerAddress"
+        formControlName="customerAddress"
+      />
+      <div
+        *ngIf="
+          form.controls['customerAddress'].invalid &&
+          (form.controls['customerAddress'].dirty ||
+            form.controls['customerAddress'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['customerAddress'].errors?.['required']"
+          >Customer address is required.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="customerPan">Customer PAN:</label>
+      <input type="text" id="customerPan" formControlName="customerPan" />
+      <div
+        *ngIf="
+          form.controls['customerPan'].invalid &&
+          (form.controls['customerPan'].dirty ||
+            form.controls['customerPan'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['customerPan'].errors?.['required']"
+          >Customer PAN is required.</small
+        >
+        <small
+          class="error"
+          *ngIf="form.controls['customerPan'].errors?.['pattern']"
+          >Customer PAN must be in the format ABCDE1234F.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="emiStatus">EMI Status:</label>
+      <select id="emiStatus" formControlName="emiStatus">
+        <option value="OnGoing">OnGoing</option>
+        <option value="Defaulted">Defaulted</option>
+        <option value="FullyPaid">FullyPaid</option>
+      </select>
+      <div
+        *ngIf="
+          form.controls['emiStatus'].invalid &&
+          (form.controls['emiStatus'].dirty ||
+            form.controls['emiStatus'].touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.controls['emiStatus'].errors?.['required']"
+          >EMI status is required.</small
+        >
+      </div>
+    </div>
+    <button type="submit" [disabled]="!form.valid">Create EMI Plan</button>
+  </form>
+  <div *ngIf="acknowledgement" class="acknowledgement">
+    {{ acknowledgement }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div class="form-container">
+    <button (click)="navigateHome()">Back to Home</button>
+  </div>
+</div>
